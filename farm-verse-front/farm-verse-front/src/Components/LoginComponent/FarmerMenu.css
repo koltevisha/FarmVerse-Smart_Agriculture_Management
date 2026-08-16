@@ -1,0 +1,2351 @@
+/* ============================================================
+   FARMVERSE
+   AGRICULTURE DASHBOARD
+   DEEP GREEN + TURMERIC + EARTH BROWN
+============================================================ */
+
+@import url(
+  "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap"
+);
+
+
+/* ============================================================
+   GLOBAL
+============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #f5f0df;
+
+  font-family:
+    "DM Sans",
+    "Segoe UI",
+    Arial,
+    sans-serif;
+}
+
+button {
+  font-family: inherit;
+}
+
+
+/* ============================================================
+   MAIN SHELL
+============================================================ */
+
+.fcc-shell {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f7f1df 0%,
+      #eee8cf 48%,
+      #e4e6cf 100%
+    );
+
+  color: #183c2c;
+}
+
+
+/* ============================================================
+   SIDEBAR
+============================================================ */
+
+.fcc-sidebar {
+  position: fixed;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 350px;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background: #073a28;
+
+  color: #ffffff;
+
+  box-shadow:
+    12px 0 38px
+    rgba(25, 49, 31, 0.20);
+
+  z-index: 1000;
+}
+
+
+/* ============================================================
+   SIDEBAR IMAGE
+   FIXED — NO HOVER ZOOM
+============================================================ */
+
+.fcc-sidebar-image {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-size: cover;
+
+  background-position:
+    center center;
+
+  background-repeat: no-repeat;
+
+  transform: none;
+
+  filter:
+    saturate(1.02)
+    contrast(1.04)
+    brightness(0.92);
+
+  z-index: 0;
+
+  transition: none;
+}
+
+
+/* ============================================================
+   SIDEBAR OVERLAY
+============================================================ */
+
+.fcc-sidebar-shade {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3, 48, 31, 0.52) 0%,
+      rgba(3, 54, 34, 0.64) 25%,
+      rgba(2, 43, 28, 0.76) 55%,
+      rgba(2, 28, 18, 0.94) 100%
+    );
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+.fcc-sidebar-shade::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 35, 22, 0.42),
+      transparent 78%
+    );
+}
+
+
+/* ============================================================
+   SIDEBAR GLOW
+============================================================ */
+
+.fcc-sidebar-glow {
+  position: absolute;
+
+  right: -100px;
+  top: 100px;
+
+  width: 260px;
+  height: 260px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(222, 182, 62, 0.15);
+
+  filter:
+    blur(48px);
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+
+/* ============================================================
+   SIDEBAR CONTENT
+============================================================ */
+
+.fcc-sidebar-content {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+  height: 100%;
+
+  padding:
+    30px 22px 22px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow-y: auto;
+}
+
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.fcc-sidebar-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding:
+    0 7px 27px;
+
+  border-bottom:
+    1px solid
+    rgba(
+      225,
+      236,
+      205,
+      0.18
+    );
+
+  flex-shrink: 0;
+}
+
+
+.fcc-sidebar-logo {
+  width: 60px;
+  height: 60px;
+
+  flex: 0 0 60px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #b7dc77,
+      #57924c
+    );
+
+  font-size: 27px;
+
+  box-shadow:
+    0 12px 26px
+    rgba(0, 0, 0, 0.22);
+}
+
+
+.fcc-sidebar-name {
+  color: #ffffff;
+
+  font-size: 30px;
+
+  line-height: 1;
+
+  font-weight: 900;
+
+  letter-spacing: -0.8px;
+
+  white-space: nowrap;
+}
+
+
+.fcc-sidebar-tagline {
+  margin-top: 8px;
+
+  color: #e0d07a;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.7px;
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+.fcc-nav-section {
+  margin-top: 26px;
+
+  flex-shrink: 0;
+}
+
+
+.fcc-nav-label {
+  display: block;
+
+  margin:
+    0 12px 11px;
+
+  color:
+    rgba(
+      215,
+      228,
+      199,
+      0.78
+    );
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.7px;
+}
+
+
+/* ============================================================
+   NAV ITEM
+============================================================ */
+
+.fcc-nav-item {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 58px;
+
+  margin-bottom: 6px;
+
+  padding:
+    0 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.03
+    );
+
+  color:
+    rgba(
+      247,
+      249,
+      241,
+      0.96
+    );
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* ============================================================
+   NAV HOVER
+   NO MOVEMENT
+============================================================ */
+
+.fcc-nav-item:hover {
+  background:
+    rgba(
+      154,
+      183,
+      87,
+      0.18
+    );
+
+  transform: none;
+}
+
+
+/* ============================================================
+   ACTIVE NAV
+============================================================ */
+
+.fcc-nav-item.is-active {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(123, 174, 77, 0.42),
+      rgba(102, 153, 67, 0.14)
+    );
+
+  color:
+    #f1e7a6;
+
+  box-shadow:
+    inset 5px 0 0
+    #d6bb4e;
+}
+
+
+/* ============================================================
+   NAV ICON
+============================================================ */
+
+.fcc-nav-symbol {
+  width: 31px;
+  height: 31px;
+
+  flex: 0 0 31px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color:
+    #b8d77d;
+
+  font-size: 19px;
+
+  text-align: center;
+}
+
+
+/* ============================================================
+   OPERATIONS
+============================================================ */
+
+.fcc-operation-area {
+  margin-top: 20px;
+
+  padding-top: 20px;
+
+  border-top:
+    1px solid
+    rgba(
+      222,
+      235,
+      204,
+      0.15
+    );
+
+  flex-shrink: 0;
+}
+
+
+.fcc-operation-btn {
+  width: 100%;
+
+  min-height: 52px;
+
+  margin-bottom: 8px;
+
+  padding:
+    0 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  border:
+    1px solid
+    rgba(
+      227,
+      198,
+      86,
+      0.38
+    );
+
+  border-radius: 10px;
+
+  background:
+    rgba(
+      20,
+      82,
+      49,
+      0.60
+    );
+
+  color:
+    #e9d477;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.fcc-operation-btn:hover {
+  background:
+    rgba(
+      51,
+      111,
+      62,
+      0.78
+    );
+
+  border-color:
+    rgba(
+      232,
+      210,
+      109,
+      0.62
+    );
+
+  transform: none;
+}
+
+
+.fcc-operation-btn span {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  font-size: 17px;
+}
+
+
+/* ============================================================
+   SIDEBAR FOOTER
+============================================================ */
+
+.fcc-sidebar-footer {
+  margin-top: auto;
+
+  padding-top: 18px;
+
+  border-top:
+    1px solid
+    rgba(
+      222,
+      235,
+      204,
+      0.15
+    );
+
+  flex-shrink: 0;
+}
+
+
+.fcc-farmer-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 13px;
+}
+
+
+.fcc-farmer-photo {
+  width: 46px;
+  height: 46px;
+
+  flex: 0 0 46px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    #a3c66d;
+
+  border-radius: 50%;
+
+  background:
+    #e6efd2;
+
+  font-size: 23px;
+
+  box-shadow:
+    0 5px 15px
+    rgba(0, 0, 0, 0.18);
+}
+
+
+.fcc-farmer-status strong {
+  display: block;
+
+  color: #ffffff;
+
+  font-size: 13px;
+}
+
+
+.fcc-farmer-status span {
+  display: block;
+
+  margin-top: 3px;
+
+  color:
+    #b4c99e;
+
+  font-size: 9px;
+}
+
+
+.fcc-signout {
+  width: 100%;
+
+  min-height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background:
+    rgba(
+      2,
+      29,
+      18,
+      0.78
+    );
+
+  color:
+    #f1f3eb;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease;
+}
+
+
+.fcc-signout:hover {
+  background:
+    rgba(
+      165,
+      75,
+      48,
+      0.42
+    );
+
+  transform: none;
+}
+
+
+/* ============================================================
+   MAIN
+============================================================ */
+
+.fcc-main {
+  width:
+    calc(
+      100% - 350px
+    );
+
+  margin-left: 350px;
+
+  min-height: 100vh;
+
+  min-width: 0;
+}
+
+
+/* ============================================================
+   TOP BAR
+============================================================ */
+
+.fcc-topbar {
+  min-height: 116px;
+
+  padding:
+    24px 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-bottom:
+    1px solid
+    #d9d7c6;
+
+  background:
+    rgba(
+      255,
+      254,
+      247,
+      0.97
+    );
+}
+
+
+.fcc-top-kicker {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color:
+    #7d8f57;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+}
+
+
+.fcc-topbar h1 {
+  margin: 0;
+
+  color:
+    #194431;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 32px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.6px;
+}
+
+
+.fcc-topbar p {
+  margin:
+    5px 0 0;
+
+  color:
+    #718078;
+
+  font-size: 12px;
+}
+
+
+.fcc-top-status {
+  min-height: 40px;
+
+  padding:
+    0 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  border:
+    1px solid
+    #d6d2bc;
+
+  border-radius: 10px;
+
+  background:
+    #fbf8e9;
+
+  color:
+    #5f684f;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+
+.fcc-status-dot {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background:
+    #78a952;
+
+  box-shadow:
+    0 0 0 5px
+    rgba(
+      120,
+      169,
+      82,
+      0.13
+    );
+}
+
+
+/* ============================================================
+   CONTENT
+============================================================ */
+
+.fcc-content {
+  width:
+    min(
+      1400px,
+      calc(
+        100% - 70px
+      )
+    );
+
+  margin:
+    0 auto;
+
+  padding:
+    32px 0 46px;
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.fcc-hero {
+  position: relative;
+
+  min-height: 310px;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  background-size: cover;
+
+  background-position:
+    center center;
+
+  background-repeat: no-repeat;
+
+  display: flex;
+
+  align-items: center;
+
+  box-shadow:
+    0 20px 42px
+    rgba(
+      25,
+      65,
+      41,
+      0.18
+    );
+}
+
+
+.fcc-hero::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2, 42, 27, 0.25),
+      transparent 75%
+    );
+
+  pointer-events: none;
+}
+
+
+.fcc-hero-content {
+  position: relative;
+
+  z-index: 3;
+
+  max-width: 850px;
+
+  padding: 43px;
+}
+
+
+.fcc-hero-pill {
+  display: inline-flex;
+
+  padding:
+    8px 15px;
+
+  border:
+    1px solid
+    rgba(
+      220,
+      231,
+      169,
+      0.48
+    );
+
+  border-radius: 50px;
+
+  background:
+    rgba(
+      90,
+      132,
+      63,
+      0.26
+    );
+
+  color:
+    #e9efbc;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.4px;
+}
+
+
+.fcc-hero h2 {
+  margin:
+    18px 0 0;
+
+  color:
+    #ffffff;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(
+      43px,
+      4.4vw,
+      67px
+    );
+
+  line-height:
+    0.96;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    -2.1px;
+}
+
+
+.fcc-hero h2 span {
+  color:
+    #e5efa9;
+
+  font-style:
+    italic;
+}
+
+
+.fcc-hero p {
+  max-width: 750px;
+
+  margin:
+    19px 0 0;
+
+  color:
+    rgba(
+      246,
+      250,
+      238,
+      0.91
+    );
+
+  font-size: 14px;
+
+  line-height: 1.65;
+}
+
+
+.fcc-hero-sun {
+  position: absolute;
+
+  right: 13%;
+
+  top: 30%;
+
+  width: 88px;
+  height: 88px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      242,
+      205,
+      85,
+      0.62
+    );
+
+  box-shadow:
+    0 0 60px
+    rgba(
+      242,
+      205,
+      85,
+      0.38
+    );
+
+  z-index: 2;
+}
+
+
+/* ============================================================
+   SECTION HEADER
+============================================================ */
+
+.fcc-section-head {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 15px;
+}
+
+
+.fcc-section-head-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.fcc-section-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background:
+    #e3ecd1;
+
+  color:
+    #568346;
+
+  font-size: 18px;
+}
+
+
+.fcc-section-head h2 {
+  margin: 0;
+
+  color:
+    #214a35;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 25px;
+
+  font-weight: 800;
+}
+
+
+.fcc-section-head p {
+  margin:
+    3px 0 0;
+
+  color:
+    #7b847a;
+
+  font-size: 10px;
+}
+
+
+.fcc-live-pill {
+  padding:
+    6px 11px;
+
+  border-radius: 20px;
+
+  background:
+    #e3ecd7;
+
+  color:
+    #4d7d43;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.8px;
+}
+
+
+/* ============================================================
+   FARM PULSE
+============================================================ */
+
+.fcc-pulse {
+  margin-top: 20px;
+
+  padding: 22px;
+
+  border:
+    1px solid
+    #d9d3b8;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f8f4e5,
+      #eee9d3
+    );
+
+  box-shadow:
+    0 10px 28px
+    rgba(
+      74,
+      73,
+      45,
+      0.07
+    );
+}
+
+
+.fcc-pulse-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap: 15px;
+}
+
+
+/* ============================================================
+   IMAGE CARDS
+============================================================ */
+
+.fcc-pulse-card {
+  position: relative;
+
+  min-height: 300px;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      87,
+      89,
+      50,
+      0.24
+    );
+
+  border-radius: 18px;
+
+  background-color:
+    #315b3c;
+
+  background-size:
+    cover;
+
+  background-position:
+    center center;
+
+  background-repeat:
+    no-repeat;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  box-shadow:
+    0 12px 25px
+    rgba(
+      46,
+      51,
+      33,
+      0.13
+    );
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* ============================================================
+   CARD HOVER
+   IMAGE DOES NOT ZOOM
+============================================================ */
+
+.fcc-pulse-card:hover {
+  transform:
+    translateY(-5px);
+
+  box-shadow:
+    0 18px 34px
+    rgba(
+      46,
+      51,
+      33,
+      0.21
+    );
+
+  background-size:
+    cover;
+}
+
+
+/* ============================================================
+   FARM CARD
+============================================================ */
+
+.fcc-land-card {
+  background-position:
+    center center;
+
+  background-size:
+    cover;
+}
+
+
+/* ============================================================
+   CROP CARD
+============================================================ */
+
+.fcc-crop-card {
+  background-position:
+    center center;
+
+  background-size:
+    cover;
+
+  background-color:
+    #456d2c;
+}
+
+
+/* ============================================================
+   EXPENSE CARD
+============================================================ */
+
+.fcc-expense-card {
+  background-position:
+    center center;
+
+  background-size:
+    cover;
+
+  background-color:
+    #72542d;
+}
+
+
+/* ============================================================
+   CARD OVERLAY
+============================================================ */
+
+.fcc-pulse-card::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 25%,
+      rgba(
+        0,
+        0,
+        0,
+        0.15
+      ) 50%,
+      rgba(
+        0,
+        0,
+        0,
+        0.68
+      ) 100%
+    );
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+/* ============================================================
+   CROP OVERLAY
+============================================================ */
+
+.fcc-crop-card::after {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20, 60, 20, 0.04) 0%,
+      rgba(20, 50, 15, 0.12) 35%,
+      rgba(20, 45, 12, 0.78) 100%
+    );
+}
+
+
+/* ============================================================
+   EXPENSE OVERLAY
+============================================================ */
+
+.fcc-expense-card::after {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(70, 45, 15, 0.05) 0%,
+      rgba(55, 35, 12, 0.16) 35%,
+      rgba(42, 25, 10, 0.82) 100%
+    );
+}
+
+
+/* ============================================================
+   CARD ICON
+============================================================ */
+
+.fcc-pulse-card-icon {
+  position: absolute;
+
+  top: 18px;
+  left: 18px;
+
+  z-index: 4;
+
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 20px;
+
+  box-shadow:
+    0 8px 20px
+    rgba(
+      0,
+      0,
+      0,
+      0.16
+    );
+}
+
+
+.fcc-pulse-card-icon.land {
+  background:
+    #d9e8bc;
+
+  color:
+    #27613d;
+}
+
+
+.fcc-pulse-card-icon.crop {
+  background:
+    #d8e3a1;
+
+  color:
+    #466b22;
+}
+
+
+.fcc-pulse-card-icon.expense {
+  background:
+    #e6c86b;
+
+  color:
+    #634518;
+}
+
+
+/* ============================================================
+   CARD CONTENT
+============================================================ */
+
+.fcc-pulse-bottom {
+  position: absolute;
+
+  left: 22px;
+  right: 22px;
+  bottom: 21px;
+
+  z-index: 4;
+
+  color: #ffffff;
+}
+
+
+.fcc-pulse-bottom > span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color:
+    rgba(
+      242,
+      246,
+      222,
+      0.88
+    );
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.2px;
+}
+
+
+.fcc-pulse-bottom strong {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 7px;
+
+  color:
+    #ffffff;
+
+  font-size: 34px;
+
+  line-height: 1;
+
+  font-weight: 900;
+
+  text-shadow:
+    0 2px 7px
+    rgba(
+      0,
+      0,
+      0,
+      0.28
+    );
+}
+
+
+.fcc-pulse-bottom strong small {
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+
+.fcc-pulse-bottom p {
+  margin:
+    8px 0 0;
+
+  color:
+    rgba(
+      247,
+      248,
+      237,
+      0.88
+    );
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+
+.expense-value {
+  font-size:
+    28px !important;
+}
+
+
+/* ============================================================
+   QUICK ACTIONS
+============================================================ */
+
+.fcc-quick {
+  margin-top: 28px;
+}
+
+
+.fcc-quick-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap: 13px;
+}
+
+
+.fcc-quick-card {
+  min-height: 82px;
+
+  padding:
+    15px 17px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  border:
+    1px solid
+    #d8d4bd;
+
+  border-radius: 15px;
+
+  background:
+    #faf7e9;
+
+  color:
+    #1e4632;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+
+.fcc-quick-card:hover {
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 12px 25px
+    rgba(
+      54,
+      59,
+      38,
+      0.12
+    );
+}
+
+
+.fcc-quick-icon {
+  width: 44px;
+  height: 44px;
+
+  flex: 0 0 44px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    #e3edd4;
+
+  color:
+    #347048;
+
+  font-size: 21px;
+
+  font-weight: 900;
+}
+
+
+.fcc-quick-card strong {
+  display: block;
+
+  color:
+    #1c4b34;
+
+  font-size: 13px;
+
+  font-weight: 900;
+}
+
+
+.fcc-quick-card span {
+  display: block;
+
+  margin-top: 4px;
+
+  color:
+    #7b8278;
+
+  font-size: 10px;
+}
+
+
+.fcc-quick-card b {
+  margin-left: auto;
+
+  color:
+    #6c8c46;
+
+  font-size: 20px;
+}
+
+
+.fcc-quick-card.farm-action
+.fcc-quick-icon {
+  background:
+    #dfe9ce;
+}
+
+
+.fcc-quick-card.crop-action
+.fcc-quick-icon {
+  background:
+    #e6edc5;
+}
+
+
+.fcc-quick-card.expense-action
+.fcc-quick-icon {
+  background:
+    #eee2bd;
+
+  color:
+    #75511c;
+}
+
+
+/* ============================================================
+   FARM QUOTE
+============================================================ */
+
+.fcc-quote-section {
+  margin-top: 28px;
+
+  padding:
+    25px 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  border:
+    1px solid
+    #d4cba9;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #173f2d,
+      #0d5738
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 14px 30px
+    rgba(
+      23,
+      62,
+      43,
+      0.16
+    );
+}
+
+
+.fcc-quote-mark {
+  color:
+    #d7c261;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 70px;
+
+  line-height: 0.7;
+}
+
+
+.fcc-quote-content {
+  flex: 1;
+}
+
+
+.fcc-quote-content > span {
+  color:
+    #dfd278;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.4px;
+}
+
+
+.fcc-quote-content h2 {
+  max-width: 850px;
+
+  margin:
+    8px 0 0;
+
+  color:
+    #f4f0d8;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 21px;
+
+  line-height: 1.35;
+}
+
+
+.fcc-quote-content p {
+  margin:
+    7px 0 0;
+
+  color:
+    rgba(
+      236,
+      240,
+      221,
+      0.70
+    );
+
+  font-size: 10px;
+}
+
+
+.fcc-quote-leaf {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      224,
+      199,
+      91,
+      0.17
+    );
+
+  font-size: 25px;
+}
+
+
+/* ============================================================
+   BOTTOM STRIP
+============================================================ */
+
+.fcc-bottom-strip {
+  margin-top: 25px;
+
+  padding:
+    20px 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border:
+    1px solid
+    #d9d3b8;
+
+  border-radius: 16px;
+
+  background:
+    #f8f4e3;
+}
+
+
+.fcc-bottom-strip > div:first-child {
+  min-width: 180px;
+}
+
+
+.fcc-bottom-strip span {
+  display: block;
+
+  color:
+    #879463;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.2px;
+}
+
+
+.fcc-bottom-strip strong {
+  display: block;
+
+  margin-top: 4px;
+
+  color:
+    #214a35;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 19px;
+}
+
+
+.fcc-bottom-line {
+  flex: 1;
+
+  max-width: 300px;
+
+  display: flex;
+
+  gap: 5px;
+}
+
+
+.fcc-bottom-line span {
+  height: 5px;
+
+  flex: 1;
+
+  border-radius: 10px;
+
+  background:
+    #6c9250;
+}
+
+
+.fcc-bottom-line span:nth-child(2) {
+  background:
+    #b99b48;
+}
+
+
+.fcc-bottom-line span:nth-child(3) {
+  background:
+    #547d4b;
+}
+
+
+.fcc-bottom-line span:nth-child(4) {
+  background:
+    #9b623f;
+}
+
+
+.fcc-bottom-line span:nth-child(5) {
+  background:
+    #315f44;
+}
+
+
+.fcc-bottom-strip p {
+  margin: 0;
+
+  color:
+    #7b8177;
+
+  font-size: 10px;
+
+  text-align: right;
+}
+
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+.fcc-footer {
+  margin-top: 24px;
+
+  padding-top: 15px;
+
+  border-top:
+    1px solid
+    #d8d4c0;
+
+  color:
+    #879082;
+
+  font-size: 9px;
+
+  text-align: center;
+}
+
+
+.fcc-footer span {
+  margin:
+    0 7px;
+
+  color:
+    #b49b4c;
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (max-width: 1050px) {
+
+  .fcc-sidebar {
+    width: 290px;
+  }
+
+
+  .fcc-main {
+    width:
+      calc(
+        100% - 290px
+      );
+
+    margin-left: 290px;
+  }
+
+
+  .fcc-content {
+    width:
+      calc(
+        100% - 40px
+      );
+  }
+
+
+  .fcc-topbar {
+    padding:
+      22px 28px;
+  }
+
+
+  .fcc-pulse-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .fcc-pulse-card:last-child {
+    grid-column:
+      1 / -1;
+  }
+
+
+  .fcc-quick-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 760px) {
+
+  .fcc-shell {
+    display: block;
+  }
+
+
+  .fcc-sidebar {
+    position: relative;
+
+    width: 100%;
+
+    height: auto;
+
+    min-height: 620px;
+  }
+
+
+  .fcc-sidebar-image {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-size: cover;
+
+    background-position:
+      center 30%;
+
+    transform: none;
+  }
+
+
+  .fcc-sidebar-content {
+    height: auto;
+
+    min-height: 620px;
+
+    overflow: visible;
+
+    padding:
+      28px 20px 20px;
+  }
+
+
+  .fcc-main {
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+
+  .fcc-topbar {
+    min-height: auto;
+
+    padding:
+      22px 20px;
+
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+  }
+
+
+  .fcc-top-status {
+    width: 100%;
+
+    justify-content:
+      center;
+  }
+
+
+  .fcc-content {
+    width:
+      calc(
+        100% - 28px
+      );
+
+    padding-top:
+      20px;
+  }
+
+
+  .fcc-hero {
+    min-height:
+      360px;
+
+    background-position:
+      center center;
+  }
+
+
+  .fcc-hero-content {
+    padding:
+      28px 22px;
+  }
+
+
+  .fcc-hero h2 {
+    font-size:
+      40px;
+
+    letter-spacing:
+      -1.2px;
+  }
+
+
+  .fcc-hero p {
+    font-size:
+      12px;
+  }
+
+
+  .fcc-pulse {
+    padding:
+      16px;
+  }
+
+
+  .fcc-pulse-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .fcc-pulse-card {
+    min-height:
+      280px;
+
+    background-position:
+      center center;
+
+    background-size:
+      cover;
+  }
+
+
+  .fcc-pulse-card:hover {
+    background-size:
+      cover;
+  }
+
+
+  .fcc-pulse-card:last-child {
+    grid-column:
+      auto;
+  }
+
+
+  .fcc-quote-section {
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+    padding:
+      22px;
+  }
+
+
+  .fcc-quote-leaf {
+    margin-left:
+      0;
+  }
+
+
+  .fcc-bottom-strip {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+  }
+
+
+  .fcc-bottom-line {
+    width: 100%;
+
+    max-width:
+      none;
+  }
+
+
+  .fcc-bottom-strip p {
+    text-align:
+      left;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+============================================================ */
+
+@media (max-width: 480px) {
+
+  .fcc-sidebar {
+    min-height:
+      650px;
+  }
+
+
+  .fcc-sidebar-content {
+    padding:
+      25px 18px 18px;
+  }
+
+
+  .fcc-sidebar-name {
+    font-size:
+      27px;
+  }
+
+
+  .fcc-sidebar-logo {
+    width: 54px;
+    height: 54px;
+
+    flex-basis: 54px;
+  }
+
+
+  .fcc-nav-item {
+    min-height:
+      56px;
+
+    font-size:
+      14px;
+  }
+
+
+  .fcc-topbar h1 {
+    font-size:
+      27px;
+  }
+
+
+  .fcc-hero h2 {
+    font-size:
+      35px;
+  }
+
+
+  .fcc-section-head h2 {
+    font-size:
+      22px;
+  }
+
+
+  .fcc-pulse-card {
+    min-height:
+      250px;
+  }
+
+}
+
+
+/* ============================================================
+   ACCESSIBILITY
+============================================================ */
+
+button:focus-visible {
+  outline:
+    3px solid
+    rgba(
+      82,
+      125,
+      65,
+      0.38
+    );
+
+  outline-offset:
+    3px;
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .fcc-nav-item,
+  .fcc-operation-btn,
+  .fcc-pulse-card,
+  .fcc-quick-card {
+    transition: none;
+  }
+
+}

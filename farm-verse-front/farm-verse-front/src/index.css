@@ -1,0 +1,29 @@
+:root {
+  --fv-forest: #183a2a;
+  --fv-deep-forest: #10271c;
+  --fv-leaf: #5f8d4e;
+  --fv-fresh-green: #8baf62;
+
+  --fv-soil: #6b4632;
+  --fv-dark-soil: #3b281d;
+  --fv-terracotta: #b76545;
+
+  --fv-wheat: #c6a15b;
+
+  --fv-warm-white: #f5f1e6;
+  --fv-pure-white: #ffffff;
+  --fv-dark-text: #20251f;
+  --fv-muted-text: #6e746a;
+  --fv-subtle-border: #d9d5c8;
+
+  --font-body: "Inter", sans-serif;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --shadow-sm: 0 4px 12px rgba(32, 37, 31, 0.08);
+
+  --transition-fast: 0.2s ease;
+}
+
