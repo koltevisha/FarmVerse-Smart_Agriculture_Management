@@ -7,7 +7,7 @@ const BASE_URL =
 // API URLs
 const LOGIN_URL = `${BASE_URL}/farmverse/login`;
 const LOGOUT_URL = `${BASE_URL}/farmverse/logout`;
-const USR_URL = `${BASE_URL}/farmverse/user`;
+const USR_URL = `${BASE_URL}/farmverse/user` ;
 
 // Register new user
 export const registerNewUser = (user) => {
