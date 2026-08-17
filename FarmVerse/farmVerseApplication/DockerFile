@@ -26,4 +26,3 @@ COPY --from=build /app/target/*.jar app.jar
 
 # Start Spring Boot
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
