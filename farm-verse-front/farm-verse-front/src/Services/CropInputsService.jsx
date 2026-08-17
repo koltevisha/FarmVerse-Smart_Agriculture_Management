@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const CIN_URL = "http://localhost:9696/farmverse/crop-inputs";
+const CIN_URL = "https://farmverse-smart-agriculture-management-3.onrender.com/farmverse/crop-inputs";
 
 // Add crop inputs
 export const addCropInputs = (farmCropInputs) => {

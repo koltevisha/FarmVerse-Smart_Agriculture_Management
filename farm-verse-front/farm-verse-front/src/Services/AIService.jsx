@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const Y_URL = "http://localhost:9696/farmverse/yield";
-const E_URL = "http://localhost:9696/farmverse/predict";
+const Y_URL = "https://farmverse-smart-agriculture-management-3.onrender.com/farmverse/yield";
+const E_URL = "https://farmverse-smart-agriculture-management-3.onrender.com/farmverse/predict";
 
 export const getExpectedYield = (id) => {
     return axios.post(`${Y_URL}/${id}`, {}, {

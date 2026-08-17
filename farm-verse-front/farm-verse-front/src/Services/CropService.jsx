@@ -1,6 +1,6 @@
 import axios from 'axios';
-const CROP_URL = 'http://localhost:9696/farmverse/crop';
-const ID_URL = 'http://localhost:9696/farmverse/crop-id';
+const CROP_URL = 'https://farmverse-smart-agriculture-management-3.onrender.com/farmverse/crop';
+const ID_URL = 'https://farmverse-smart-agriculture-management-3.onrender.com/farmverse/crop-id';
 
 
 	 export const addCrop = (crop) => {

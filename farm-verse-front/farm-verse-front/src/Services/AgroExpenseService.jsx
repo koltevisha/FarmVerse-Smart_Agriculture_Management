@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const EXPENSE_URL = "http://localhost:9696/farmverse/exp";
-const ID_URL = "http://localhost:9696/farmverse/exp-id";
+const EXPENSE_URL = "https://farmverse-smart-agriculture-management-3.onrender.com/farmverse/exp";
+const ID_URL = "https://farmverse-smart-agriculture-management-3.onrender.com/farmverse/exp-id";
 
 export const addExpense = (expense) => {
   return axios.post(`${EXPENSE_URL}`, expense, {

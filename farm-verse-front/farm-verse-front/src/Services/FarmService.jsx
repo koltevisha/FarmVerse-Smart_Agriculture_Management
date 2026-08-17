@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const FARM_URL ='http://localhost:9696/farmverse/farm';
-const FID_URL = 'http://localhost:9696/farmverse/farm-id';
-const FNO_URL = 'http://localhost:9696/farmverse/farm-no';
+const FARM_URL ='https://farmverse-smart-agriculture-management-3.onrender.com/farmverse/farm';
+const FID_URL = 'https://farmverse-smart-agriculture-management-3.onrender.com/farmverse/farm-id';
+const FNO_URL = 'https://farmverse-smart-agriculture-management-3.onrender.com/farmverse/farm-no';
 
     
     export  const addFarm = (farm) => {
