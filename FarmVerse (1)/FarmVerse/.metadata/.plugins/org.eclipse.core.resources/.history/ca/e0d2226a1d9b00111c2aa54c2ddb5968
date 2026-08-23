@@ -1,0 +1,458 @@
+package edu.infosys.farmVerseApplication.service;
+
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import edu.infosys.farmVerseApplication.bean.AgroExpense;
+import edu.infosys.farmVerseApplication.bean.Crop;
+import edu.infosys.farmVerseApplication.bean.CropExpense;
+import edu.infosys.farmVerseApplication.bean.CropInputs;
+import edu.infosys.farmVerseApplication.bean.Farm;
+import edu.infosys.farmVerseApplication.bean.FarmCropInputs;
+import edu.infosys.farmVerseApplication.bean.FarmCropReport;
+import edu.infosys.farmVerseApplication.dao.AgroExpenseDao;
+import edu.infosys.farmVerseApplication.dao.CropDao;
+import edu.infosys.farmVerseApplication.dao.CropInputsDao;
+import edu.infosys.farmVerseApplication.dao.FarmDao;
+
+@Service
+public class CropInputsService {
+
+    @Autowired
+    private CropDao cropDao;
+
+    @Autowired
+    private FarmUserService service;
+
+    @Autowired
+    private FarmDao farmDao;
+
+    @Autowired
+    private AgroExpenseDao agroExpDao;
+
+    @Autowired
+    private CropInputsDao inputsDao;
+
+
+    // ============================================================
+    // GET FARM + CROP INFORMATION
+    // ============================================================
+
+    public FarmCropInputs setFarmCropInputData(String cropId) {
+
+        Crop crop = cropDao.getCropById(cropId);
+
+        if (crop == null) {
+            return null;
+        }
+
+        Farm farm = farmDao.getFarmById(crop.getFarmId());
+
+        if (farm == null) {
+            return null;
+        }
+
+        return new FarmCropInputs(
+            crop,
+            farm.getSoil()
+        );
+    }
+
+
+    // ============================================================
+    // CREATE CROP INPUT OBJECT
+    // ============================================================
+
+    public CropInputs setCropInputData(
+            FarmCropInputs farmCropInputs) {
+
+        CropInputs cropInputs =
+            new CropInputs(farmCropInputs);
+
+        /*
+         * Default agro tools value.
+         * Keep this if your existing application
+         * requires it.
+         */
+        cropInputs.setAgroTools(1.0);
+
+        return cropInputs;
+    }
+
+
+    // ============================================================
+    // SAVE CROP INPUTS
+    // ============================================================
+
+    public CropInputs saveCropInputs(
+            FarmCropInputs farmCropInputs) {
+
+        if (farmCropInputs == null) {
+            throw new IllegalArgumentException(
+                "Crop input data cannot be null."
+            );
+        }
+
+        CropInputs cropInputs =
+            new CropInputs(farmCropInputs);
+
+        /*
+         * Keep existing default value.
+         */
+        cropInputs.setAgroTools(1.0);
+
+        /*
+         * THIS WAS MISSING.
+         *
+         * Actually saves the crop input information
+         * into the database.
+         */
+        inputsDao.addCropInputs(cropInputs);
+
+        return cropInputs;
+    }
+
+
+    // ============================================================
+    // GET SAVED CROP INPUTS
+    // ============================================================
+
+    public CropInputs getCropInputs(String cropId) {
+
+        return inputsDao.getCropInputsById(cropId);
+    }
+
+
+    // ============================================================
+    // DELETE CROP INPUTS
+    // ============================================================
+
+    public void deleteCropInputs(String cropId) {
+
+        inputsDao.deleteCropInputsById(cropId);
+    }
+
+
+    // ============================================================
+    // OLD EXPENSE CALCULATION
+    // ============================================================
+
+    public void expenseCalculationOld(String cropId) {
+
+        List<AgroExpense> expenseList =
+            agroExpDao.getAllExpense();
+
+        Map<String, AgroExpense> expenseMap =
+            new HashMap<>();
+
+        for (AgroExpense ae : expenseList) {
+
+            expenseMap.put(
+                ae.getExpenseName(),
+                ae
+            );
+        }
+
+        CropInputs cropInputs =
+            inputsDao.getCropInputsById(cropId);
+
+        if (cropInputs == null) {
+
+            System.out.println(
+                "Crop Inputs not found for cropId: "
+                + cropId
+            );
+
+            return;
+        }
+
+        Class<?> clazz =
+            cropInputs.getClass();
+
+        Field[] fields =
+            clazz.getDeclaredFields();
+
+        Double totValue = 0.0;
+
+        try {
+
+            for (Field fd : fields) {
+
+                fd.setAccessible(true);
+
+                AgroExpense ae =
+                    expenseMap.get(fd.getName());
+
+                if (ae != null) {
+
+                    Object value =
+                        fd.get(cropInputs);
+
+                    if (value != null) {
+
+                        Double inputValue =
+                            Double.parseDouble(
+                                value.toString()
+                            );
+
+                        Double perAcre =
+                            ae.getRatePerUnit()
+                            * inputValue;
+
+                        System.out.println(
+                            ae.getExpenseName()
+                            + " - Rate: "
+                            + ae.getRatePerUnit()
+                            + " - Input: "
+                            + inputValue
+                            + " - Cost: "
+                            + perAcre
+                        );
+
+                        totValue =
+                            totValue + perAcre;
+                    }
+                }
+            }
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
+
+        System.out.println(
+            "Total Cost Per Acre: "
+            + totValue
+        );
+    }
+
+
+    // ============================================================
+    // FARM CROP REPORT
+    // ============================================================
+
+    public FarmCropReport expenseCalculation(
+            String cropId) {
+
+        /*
+         * Get all expense rates.
+         */
+        List<AgroExpense> expenseList =
+            agroExpDao.getAllExpense();
+
+        Map<String, AgroExpense> expenseMap =
+            new HashMap<>();
+
+        for (AgroExpense ae : expenseList) {
+
+            expenseMap.put(
+                ae.getExpenseName(),
+                ae
+            );
+        }
+
+
+        /*
+         * Get SAVED crop inputs.
+         */
+        CropInputs cropInputs =
+            inputsDao.getCropInputsById(cropId);
+
+        if (cropInputs == null) {
+
+            System.out.println(
+                "No saved CropInputs found for: "
+                + cropId
+            );
+
+            return null;
+        }
+
+
+        Class<?> clazz =
+            cropInputs.getClass();
+
+        Field[] fields =
+            clazz.getDeclaredFields();
+
+
+        /*
+         * Create CropExpense report object.
+         */
+        CropExpense cropExpense =
+            new CropExpense();
+
+        cropExpense.setCropId(
+            cropInputs.getCropId()
+        );
+
+
+        Double totalValue = 0.0;
+
+
+        try {
+
+            for (Field fd : fields) {
+
+                fd.setAccessible(true);
+
+                String fname =
+                    fd.getName();
+
+
+                /*
+                 * Crop ID is not an expense.
+                 */
+                if (
+                    fname.equalsIgnoreCase(
+                        "cropId"
+                    )
+                ) {
+                    continue;
+                }
+
+
+                /*
+                 * IMPORTANT:
+                 * Do not call .toString()
+                 * directly on a null value.
+                 */
+                Object fieldValue =
+                    fd.get(cropInputs);
+
+                if (fieldValue == null) {
+                    continue;
+                }
+
+
+                AgroExpense ae =
+                    expenseMap.get(fname);
+
+                if (ae == null) {
+                    continue;
+                }
+
+
+                Double inputValue =
+                    Double.parseDouble(
+                        fieldValue.toString()
+                    );
+
+
+                Double perAcre =
+                    ae.getRatePerUnit()
+                    * inputValue;
+
+
+                totalValue =
+                    totalValue + perAcre;
+
+
+                /*
+                 * Store calculated expense
+                 * values in CropExpense.
+                 */
+                if (
+                    fname.equalsIgnoreCase(
+                        "waterGallon"
+                    )
+                ) {
+
+                    cropExpense.setWaterGallon(
+                        perAcre
+                    );
+
+                } else if (
+                    fname.equalsIgnoreCase(
+                        "fertilizer"
+                    )
+                ) {
+
+                    cropExpense.setFertilizer(
+                        perAcre
+                    );
+
+                } else if (
+                    fname.equalsIgnoreCase(
+                        "pesticides"
+                    )
+                ) {
+
+                    cropExpense.setPesticides(
+                        perAcre
+                    );
+
+                } else if (
+                    fname.equalsIgnoreCase(
+                        "tractorHour"
+                    )
+                ) {
+
+                    cropExpense.setTractorHour(
+                        perAcre
+                    );
+
+                } else if (
+                    fname.equalsIgnoreCase(
+                        "agroTools"
+                    )
+                ) {
+
+                    cropExpense.setAgroTools(
+                        perAcre
+                    );
+                }
+            }
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
+
+
+        /*
+         * Get crop.
+         */
+        Crop crop =
+            cropDao.getCropById(cropId);
+
+        if (crop == null) {
+
+            return null;
+        }
+
+
+        /*
+         * Get farm.
+         */
+        Farm farm =
+            farmDao.getFarmById(
+                crop.getFarmId()
+            );
+
+        if (farm == null) {
+
+            return null;
+        }
+
+
+        /*
+         * Build final report.
+         */
+        FarmCropReport fcrepo =
+            new FarmCropReport(
+                farm,
+                crop,
+                cropInputs,
+                cropExpense,
+                totalValue
+            );
+
+        return fcrepo;
+    }
+}

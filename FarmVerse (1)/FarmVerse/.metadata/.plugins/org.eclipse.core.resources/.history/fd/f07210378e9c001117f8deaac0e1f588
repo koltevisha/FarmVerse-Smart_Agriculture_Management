@@ -1,0 +1,150 @@
+package edu.infosys.farmVerseApplication.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import edu.infosys.farmVerseApplication.aiService.ExpensePredictService;
+import edu.infosys.farmVerseApplication.aiService.YieldPredictService;
+import edu.infosys.farmVerseApplication.bean.Crop;
+import edu.infosys.farmVerseApplication.bean.CropInputs;
+import edu.infosys.farmVerseApplication.bean.FarmCrop;
+import edu.infosys.farmVerseApplication.bean.FarmCropInputs;
+import edu.infosys.farmVerseApplication.bean.FarmCropReport;
+import edu.infosys.farmVerseApplication.dao.CropDao;
+import edu.infosys.farmVerseApplication.dao.CropInputsDao;
+import edu.infosys.farmVerseApplication.service.CropInputsService;
+import edu.infosys.farmVerseApplication.service.CropService;
+
+@RestController
+@RequestMapping("/farmverse")
+@CrossOrigin(
+        origins = "http://localhost:3636",
+        allowCredentials = "true"
+)
+public class AIController {
+
+    @Autowired
+    private YieldPredictService yService;
+
+    @Autowired
+    private ExpensePredictService eService;
+
+    @Autowired
+    private CropService cService;
+
+    @Autowired
+    private CropDao cropDao;
+
+    @Autowired
+    private CropInputsService iService;
+
+    @Autowired
+    private CropInputsDao cropInputsDao;
+
+
+    // =====================================================
+    // PREDICT YIELD
+    // =====================================================
+
+    @PostMapping("/yield/{id}")
+    public FarmCrop getExpectedYield(
+            @PathVariable String id) {
+
+        Crop crop = cropDao.getCropById(id);
+
+        FarmCrop farmCrop =
+                cService.setFarmCrop(crop);
+
+        FarmCrop predictedCrop =
+                yService.predictYield(farmCrop);
+
+        crop.setYield(predictedCrop.getYield());
+
+        cropDao.addCrop(crop);
+
+        return predictedCrop;
+    }
+
+
+    // =====================================================
+    // PREDICT EXPENSE - REQUEST BODY
+    // =====================================================
+
+    @PostMapping("/predict")
+    public FarmCropInputs getExpectedExpenses(
+            @RequestBody FarmCropInputs cropInputs) {
+
+        return eService.predictResourceExpenses(cropInputs);
+    }
+
+
+    // =====================================================
+    // PREDICT EXPENSE BY CROP ID
+    // =====================================================
+
+    @PostMapping("/predict/{id}")
+    public FarmCropReport getExpectedExpenses(
+            @PathVariable String id) {
+
+        // -------------------------------------------------
+        // 1. Get crop information
+        // -------------------------------------------------
+
+        FarmCropInputs farmCropInputs =
+                iService.setFarmCropInputData(id);
+
+
+        // -------------------------------------------------
+        // 2. AI predicts resource requirements
+        // -------------------------------------------------
+
+        FarmCropInputs predictedInputs =
+                eService.predictResourceExpenses(
+                        farmCropInputs
+                );
+
+
+        // -------------------------------------------------
+        // 3. Convert to CropInputs entity
+        // -------------------------------------------------
+
+        CropInputs cropInputs =
+                iService.setCropInputData(
+                        predictedInputs
+                );
+
+
+        // -------------------------------------------------
+        // 4. Agro Tools = ALWAYS 1 UNIT
+        // -------------------------------------------------
+
+        cropInputs.setAgroTools(1.0);
+
+
+        // -------------------------------------------------
+        // 5. Save into crop_inputs table
+        // -------------------------------------------------
+
+        cropInputsDao.addCropInputs(cropInputs);
+
+
+        // -------------------------------------------------
+        // 6. Calculate expense
+        // -------------------------------------------------
+
+        FarmCropReport report =
+                iService.expenseCalculation(id);
+
+
+        // -------------------------------------------------
+        // 7. Return report
+        // -------------------------------------------------
+
+        return report;
+    }
+}

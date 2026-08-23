@@ -1,0 +1,376 @@
+/* ==========================================================================
+   Login page — furrow field hero + ledger-style auth panel
+   ========================================================================== */
+
+:root {
+  --loam: #17110c;
+  --loam-2: #211810;
+  --wheat: #d9a94e;
+  --wheat-soft: #e8c988;
+  --sprout: #8fb472;
+  --sprout-dim: #5e7b4b;
+  --paper: #f6f1e6;
+  --ink: #221a10;
+  --ink-soft: #5a5041;
+  --mist: rgba(246, 241, 230, 0.66);
+  --mist-dim: rgba(246, 241, 230, 0.4);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.login-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(340px, 0.95fr);
+  min-height: 100vh;
+}
+
+/* ============ LEFT — FIELD ============ */
+.login-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1c140d 0%, var(--loam) 55%, #100b07 100%);
+  padding: 56px 64px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-brand {
+  position: relative;
+  z-index: 2;
+  max-width: 480px;
+  margin-top: 40px;
+  animation: fadeInLeft 0.6s ease;
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.brand-logo {
+  font-size: 1.4em;
+  font-weight: 800;
+  margin-bottom: 36px;
+  letter-spacing: 0.5px;
+  color: var(--paper);
+}
+
+.brand-heading {
+  font-size: 2.6em;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 20px;
+  color: var(--paper);
+}
+
+.brand-heading span {
+  color: var(--wheat-soft);
+}
+
+.brand-subtext {
+  font-size: 1.05em;
+  color: var(--mist);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.brand-features {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.feature-pill {
+  background: rgba(246, 241, 230, 0.08);
+  border: 1px solid rgba(246, 241, 230, 0.2);
+  backdrop-filter: blur(6px);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--paper);
+}
+
+/* Furrow field art */
+.furrows {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: 58%;
+  z-index: 1;
+}
+
+.furrow-line {
+  fill: none;
+  stroke-width: 1.4;
+}
+
+.sun {
+  animation: sun-rise 1.4s var(--ease) both;
+}
+
+@keyframes sun-rise {
+  from { transform: translateY(18px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ---- Plants ---- */
+.plant-soil {
+  fill: rgba(0, 0, 0, 0.35);
+}
+
+.plant-stem {
+  fill: none;
+  stroke: #4a6b38;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.plant-leaf {
+  stroke: #2e4020;
+  stroke-width: 0.6;
+}
+
+.plant-leaf-back {
+  fill: #5e7b4b;
+}
+
+.plant-leaf-front {
+  fill: #8fb472;
+}
+
+.plant-bud {
+  fill: #b7dc9c;
+  stroke: #2e4020;
+  stroke-width: 0.5;
+}
+
+/* Continuous gentle sway — independent of the grow cycle so a fully
+   grown plant still feels alive rather than static. */
+.plant-sway {
+  animation-name: plant-sway;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  transform-origin: 0px 0px;
+}
+
+@keyframes plant-sway {
+  from { transform: rotate(-3deg); }
+  to   { transform: rotate(3deg); }
+}
+
+/* Offspring cycle: grow once, hold, recede, then grow again —
+   staggered delays/durations per plant make the field feel alive
+   rather than a single synced blink, like new shoots breaking soil. */
+.plant-grow {
+  animation-name: sprout-cycle;
+  animation-timing-function: var(--ease);
+  animation-iteration-count: infinite;
+  transform-origin: 0px 0px;
+}
+
+@keyframes sprout-cycle {
+  0%    { transform: scaleY(0);    opacity: 0; }
+  10%   { transform: scaleY(1);    opacity: 1; }
+  78%   { transform: scaleY(1);    opacity: 1; }
+  92%   { transform: scaleY(0.15); opacity: 0.15; }
+  100%  { transform: scaleY(0);    opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plant-sway,
+  .plant-grow {
+    animation: none;
+  }
+  .sun { animation: none; }
+}
+
+/* ============ RIGHT — LEDGER ============ */
+.login-card-wrap {
+  background: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  position: relative;
+}
+
+.login-card-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 39px,
+    rgba(34, 26, 16, 0.05) 40px
+  );
+  pointer-events: none;
+}
+
+.login-card {
+  position: relative;
+  z-index: 1;
+  width: 400px;
+  max-width: 100%;
+  text-align: center;
+  animation: cardEnter 0.5s var(--ease);
+}
+
+@keyframes cardEnter {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.login-icon {
+  font-size: 2.4em;
+  margin-bottom: 4px;
+}
+
+.login-title {
+  font-weight: 800;
+  font-size: 1.6em;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+
+.login-subtitle {
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+  font-size: 0.9em;
+}
+
+/* Floating label inputs */
+.float-group {
+  position: relative;
+  margin-bottom: 22px;
+  text-align: left;
+}
+
+.float-group .form-control {
+  width: 100%;
+  padding: 18px 14px 8px;
+  border-radius: 10px;
+  border: 1.5px solid #ddd3bd;
+  background: #fff;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.float-group .form-control:hover {
+  border-color: var(--sprout);
+}
+
+.float-group .form-control:focus {
+  outline: none;
+  border-color: var(--sprout-dim);
+  background: #fff;
+  box-shadow: 0 0 0 3.5px rgba(143, 180, 114, 0.22);
+}
+
+.float-group label {
+  position: absolute;
+  left: 14px;
+  top: 15px;
+  font-size: 15px;
+  color: var(--ink-soft);
+  pointer-events: none;
+  transition: all 0.18s ease;
+}
+
+.float-group .form-control:focus + label,
+.float-group .form-control:not(:placeholder-shown) + label {
+  top: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--sprout-dim);
+}
+
+.login-btn {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 6px;
+  padding: 14px;
+  font-size: 16px;
+  color: var(--paper);
+  background: var(--ink);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 24px rgba(34, 26, 16, 0.2);
+}
+
+.login-btn:hover:not(:disabled) {
+  background: #382c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(34, 26, 16, 0.28);
+}
+
+.login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.login-btn:focus-visible,
+.register-btn:focus-visible {
+  outline: 2.5px solid var(--sprout-dim);
+  outline-offset: 2px;
+}
+
+.register-btn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 13px;
+  font-size: 15px;
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid #ddd3bd;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.register-btn:hover {
+  border-color: var(--ink);
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.error-text {
+  color: #a13f2a;
+  font-weight: 600;
+  font-size: 0.82em;
+  margin: 6px 0 0;
+}
+
+.login-error {
+  text-align: center;
+  background: #fbeae5;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+  .login-hero {
+    padding: 40px 28px 0;
+    min-height: 300px;
+  }
+  .login-brand {
+    margin-top: 20px;
+  }
+  .furrows {
+    height: 46%;
+  }
+  .login-card-wrap {
+    padding: 40px 24px 56px;
+  }
+}

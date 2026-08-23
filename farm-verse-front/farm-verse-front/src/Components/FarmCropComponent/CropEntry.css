@@ -1,0 +1,1356 @@
+/* ============================================================
+   FARMVERSE CROP ENTRY
+   ONE-PAGE DESKTOP LAYOUT
+   SAME DESIGN + BIGGER FONTS
+   ============================================================ */
+
+.crop-page {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f7f3e3 0%,
+      #f0ead4 100%
+    );
+
+  font-family:
+    var(--font-body),
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   MAIN CARD
+   ============================================================ */
+
+.crop-card {
+  position: relative;
+
+  width: 100%;
+  max-width: 1500px;
+  height: calc(100vh - 36px);
+
+  min-height: 680px;
+  max-height: 900px;
+
+  display: grid;
+
+  grid-template-columns:
+    43%
+    57%;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    #d8d2ba;
+
+  border-radius: 26px;
+
+  background: #fffdf4;
+
+  box-shadow:
+    0 22px 60px
+    rgba(
+      54,
+      67,
+      47,
+      0.16
+    );
+
+  z-index: 1;
+}
+
+
+/* ============================================================
+   LEFT SIDE
+   ============================================================ */
+
+.crop-image-side {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 8px;
+
+  background: #e9e3cd;
+
+  border-right:
+    1px solid
+    #d5cfb9;
+}
+
+
+/* ============================================================
+   LEFT IMAGE
+   ============================================================ */
+
+.crop-image-inner {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  min-height: 0;
+
+  box-sizing: border-box;
+
+  padding: 38px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
+
+  border-radius: 19px;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  color: #ffffff;
+}
+
+
+/* ============================================================
+   IMAGE BORDER
+   ============================================================ */
+
+.crop-image-inner::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.22
+    );
+
+  border-radius: 19px;
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+.crop-brand {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.crop-brand-icon {
+  width: 50px;
+  height: 50px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: #f0c843;
+
+  font-size: 25px;
+
+  box-shadow:
+    0 8px 25px
+    rgba(
+      0,
+      0,
+      0,
+      0.2
+    );
+}
+
+
+.crop-brand-name {
+  color: #ffffff;
+
+  font-size: 26px;
+
+  line-height: 1;
+
+  font-weight: 800;
+
+  letter-spacing: 0.01em;
+}
+
+
+.crop-brand-subtitle {
+  margin-top: 6px;
+
+  color: #f1ce48;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.16em;
+}
+
+
+/* ============================================================
+   LEFT TEXT
+   ============================================================ */
+
+.crop-image-bottom {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 520px;
+
+  padding-bottom: 5px;
+}
+
+
+.crop-image-tag {
+  display: inline-block;
+
+  margin-bottom: 14px;
+
+  color: #f2cd45;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.14em;
+}
+
+
+.crop-image-bottom h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size:
+    clamp(
+      48px,
+      4.2vw,
+      68px
+    );
+
+  line-height: 0.94;
+
+  font-weight: 800;
+
+  letter-spacing: -0.045em;
+}
+
+
+.crop-image-bottom p {
+  max-width: 450px;
+
+  margin:
+    17px
+    0
+    0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.92
+    );
+
+  font-size: 15px;
+
+  line-height: 1.5;
+}
+
+
+.crop-image-line {
+  width: 70px;
+  height: 5px;
+
+  margin:
+    20px
+    0
+    17px;
+
+  border-radius: 30px;
+
+  background: #f0c843;
+}
+
+
+/* ============================================================
+   LEFT STATS
+   ============================================================ */
+
+.crop-image-stats {
+  display: flex;
+
+  gap: 35px;
+}
+
+
+.crop-image-stats div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.crop-image-stats strong {
+  color: #f1ce48;
+
+  font-size: 19px;
+
+  font-weight: 900;
+}
+
+
+.crop-image-stats span {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.88
+    );
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* ============================================================
+   RIGHT SIDE
+   ============================================================ */
+
+.crop-form-side {
+  min-width: 0;
+
+  padding: 8px;
+
+  background: #f8f3df;
+
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   RIGHT FORM CARD
+   ============================================================ */
+
+.crop-form-wrapper {
+  width: 100%;
+  max-width: none;
+
+  height: 100%;
+
+  box-sizing: border-box;
+
+  margin: 0 auto;
+
+  padding:
+    28px
+    34px
+    18px;
+
+  border:
+    1px solid
+    #ded8c2;
+
+  border-radius: 19px;
+
+  background: #fffdf5;
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(
+      255,
+      255,
+      255,
+      0.55
+    );
+
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.crop-top-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+
+.crop-record-badge {
+  display: inline-block;
+
+  padding:
+    7px
+    12px;
+
+  border-radius: 30px;
+
+  background: #e5efd6;
+
+  color: #216442;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.12em;
+}
+
+
+.crop-top-header h2 {
+  margin:
+    12px
+    0
+    7px;
+
+  color: #125537;
+
+  font-size: 52px;
+
+  line-height: 0.95;
+
+  font-weight: 800;
+
+  letter-spacing: -0.045em;
+
+  white-space: nowrap;
+}
+
+
+.crop-top-header p {
+  margin: 0;
+
+  color: #858271;
+
+  font-size: 14px;
+
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   BACK BUTTON
+   ============================================================ */
+
+.crop-back-button {
+  height: 44px;
+
+  min-width: 78px;
+
+  padding:
+    0
+    12px;
+
+  border:
+    1px solid
+    #d8d2bb;
+
+  border-radius: 9px;
+
+  background: #fffdf5;
+
+  color: #145638;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    all 0.2s ease;
+}
+
+
+.crop-back-button:hover {
+  background: #f4f0df;
+
+  border-color: #bbb49b;
+
+  transform:
+    translateY(-1px);
+}
+
+
+.crop-back-button span {
+  margin-right: 5px;
+}
+
+
+/* ============================================================
+   DIVIDER
+   ============================================================ */
+
+.crop-divider {
+  width: 100%;
+  height: 1px;
+
+  margin:
+    17px
+    0
+    17px;
+
+  background: #ded8c2;
+}
+
+
+/* ============================================================
+   ALERT
+   ============================================================ */
+
+.crop-alert {
+  margin-bottom: 14px;
+
+  padding:
+    10px
+    12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  border-radius: 9px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+.crop-alert-success {
+  background: #e5f3e4;
+
+  border:
+    1px solid
+    #9bc99c;
+
+  color: #24683b;
+}
+
+
+.crop-alert-success button {
+  padding:
+    6px
+    10px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: #2b754b;
+
+  color: #ffffff;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+.crop-alert-error {
+  background: #fae9e4;
+
+  border:
+    1px solid
+    #dfaaa0;
+
+  color: #a44434;
+}
+
+
+/* ============================================================
+   FORM
+   ============================================================ */
+
+.crop-form {
+  width: 100%;
+}
+
+
+/* ============================================================
+   SECTION
+   ============================================================ */
+
+.crop-section {
+  margin-bottom: 18px;
+}
+
+
+.crop-section-heading {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+
+  margin-bottom: 11px;
+}
+
+
+.crop-section-number {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #e6efd9;
+
+  color: #28734b;
+
+  font-size: 12px;
+
+  font-weight: 900;
+}
+
+
+.crop-section-heading h3 {
+  margin:
+    0
+    0
+    3px;
+
+  color: #125537;
+
+  font-size: 18px;
+
+  font-weight: 800;
+}
+
+
+.crop-section-heading p {
+  margin: 0;
+
+  color: #8b8978;
+
+  font-size: 12px;
+}
+
+
+/* ============================================================
+   INPUT GRID
+   ============================================================ */
+
+.crop-fields-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 12px;
+}
+
+
+/* ============================================================
+   FIELD
+   ============================================================ */
+
+.crop-field {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+.crop-field label {
+  margin-bottom: 5px;
+
+  color: #125537;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.055em;
+
+  text-transform: uppercase;
+}
+
+
+/* ============================================================
+   INPUT
+   ============================================================ */
+
+.crop-input {
+  width: 100%;
+  height: 44px;
+
+  box-sizing: border-box;
+
+  padding:
+    0
+    13px;
+
+  border:
+    1px solid
+    #dcd6bd;
+
+  border-radius: 9px;
+
+  background: #fffef8;
+
+  color: #27382e;
+
+  outline: none;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  transition:
+    all 0.2s ease;
+}
+
+
+.crop-input::placeholder {
+  color: #aaa798;
+}
+
+
+.crop-input:hover {
+  border-color: #c6bea4;
+}
+
+
+.crop-input:focus {
+  border-color: #43875b;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(
+      67,
+      135,
+      91,
+      0.12
+    );
+}
+
+
+.crop-input:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+select.crop-input {
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   ERROR
+   ============================================================ */
+
+.crop-field.has-error .crop-input {
+  border-color: #c65b47;
+}
+
+
+.crop-error {
+  margin-top: 4px;
+
+  color: #b34c3b;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   SEASON PREVIEW
+   ============================================================ */
+
+.crop-season-preview {
+  margin:
+    3px
+    0
+    17px;
+
+  padding: 12px;
+
+  border:
+    1px solid
+    #ddd7c0;
+
+  border-radius: 10px;
+
+  background: #f7f2df;
+}
+
+
+.crop-season-title {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #125537;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.075em;
+
+  text-transform: uppercase;
+}
+
+
+.crop-month-bar {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      12,
+      minmax(0, 1fr)
+    );
+
+  gap: 3px;
+}
+
+
+.crop-month-chip {
+  min-width: 0;
+
+  padding:
+    6px
+    2px;
+
+  border:
+    1px solid
+    #ded9c7;
+
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  color: #8b897a;
+
+  text-align: center;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+
+.crop-month-chip.is-active {
+  background: #e5f1d9;
+
+  border-color: #72a573;
+
+  color: #36724b;
+}
+
+
+.crop-month-chip.is-start {
+  background: #2e7b4f;
+
+  border-color: #2e7b4f;
+
+  color: #ffffff;
+}
+
+
+.crop-month-chip.is-end {
+  background: #efd776;
+
+  border-color: #d5b94e;
+
+  color: #5d501d;
+}
+
+
+/* ============================================================
+   ACTIONS
+   ============================================================ */
+
+.crop-actions {
+  display: grid;
+
+  grid-template-columns:
+    100px
+    minmax(0, 1fr);
+
+  gap: 10px;
+
+  margin-top: 5px;
+}
+
+
+.crop-reset-button,
+.crop-submit-button {
+  height: 46px;
+
+  border-radius: 9px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    all 0.2s ease;
+}
+
+
+.crop-reset-button {
+  border:
+    1px solid
+    #d5cfb8;
+
+  background: #fffdf5;
+
+  color: #777563;
+}
+
+
+.crop-reset-button:hover {
+  background: #f6f1df;
+
+  border-color: #bbb49d;
+}
+
+
+.crop-submit-button {
+  border: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #17623f,
+      #0d4b31
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 7px 18px
+    rgba(
+      18,
+      85,
+      55,
+      0.17
+    );
+}
+
+
+.crop-submit-button:hover:not(:disabled) {
+  background:
+    linear-gradient(
+      135deg,
+      #1c7047,
+      #105a39
+    );
+
+  transform:
+    translateY(-1px);
+}
+
+
+.crop-submit-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.crop-footer {
+  margin-top: 10px;
+
+  padding-top: 9px;
+
+  border-top:
+    1px solid
+    #ded8c2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #aaa48e;
+
+  font-size: 9px;
+
+  text-align: center;
+}
+
+
+.crop-footer b {
+  color: #c5bea5;
+}
+
+
+/* ============================================================
+   LARGE DESKTOP
+   ============================================================ */
+
+@media (min-width: 1500px) {
+
+  .crop-page {
+    padding: 20px;
+  }
+
+  .crop-card {
+    height: calc(100vh - 40px);
+  }
+
+  .crop-image-inner {
+    padding: 42px;
+  }
+
+  .crop-top-header h2 {
+    font-size: 56px;
+  }
+
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+  .crop-page {
+    padding: 12px;
+    overflow: auto;
+  }
+
+  .crop-card {
+    height: auto;
+    min-height: 0;
+
+    grid-template-columns:
+      40%
+      60%;
+  }
+
+  .crop-image-inner {
+    min-height: 700px;
+    padding: 30px;
+  }
+
+  .crop-form-wrapper {
+    padding:
+      25px
+      25px
+      18px;
+  }
+
+  .crop-top-header h2 {
+    font-size: 44px;
+  }
+
+  .crop-image-bottom h1 {
+    font-size: 48px;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE / SMALL TABLET
+   ============================================================ */
+
+@media (max-width: 800px) {
+
+  .crop-page {
+    padding: 10px;
+    overflow: auto;
+  }
+
+  .crop-card {
+    grid-template-columns: 1fr;
+
+    height: auto;
+  }
+
+  .crop-image-side {
+    min-height: 380px;
+
+    padding: 7px;
+
+    border-right: none;
+
+    border-bottom:
+      1px solid
+      #d5cfb9;
+  }
+
+  .crop-image-inner {
+    min-height: 365px;
+
+    padding: 28px;
+  }
+
+  .crop-image-bottom h1 {
+    font-size: 43px;
+  }
+
+  .crop-form-side {
+    padding: 7px;
+  }
+
+  .crop-form-wrapper {
+    height: auto;
+
+    padding:
+      28px
+      22px
+      22px;
+  }
+
+  .crop-fields-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .crop-top-header h2 {
+    font-size: 40px;
+    white-space: normal;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+  .crop-page {
+    padding: 8px;
+  }
+
+  .crop-card {
+    border-radius: 18px;
+  }
+
+  .crop-image-side {
+    min-height: 330px;
+  }
+
+  .crop-image-inner {
+    min-height: 318px;
+
+    padding: 23px;
+
+    border-radius: 14px;
+  }
+
+  .crop-brand-icon {
+    width: 42px;
+    height: 42px;
+
+    font-size: 20px;
+  }
+
+  .crop-brand-name {
+    font-size: 21px;
+  }
+
+  .crop-brand-subtitle {
+    font-size: 7px;
+  }
+
+  .crop-image-bottom h1 {
+    font-size: 36px;
+  }
+
+  .crop-image-bottom p {
+    font-size: 12px;
+
+    margin-top: 13px;
+  }
+
+  .crop-image-line {
+    margin:
+      15px
+      0;
+  }
+
+  .crop-image-stats {
+    gap: 14px;
+  }
+
+  .crop-image-stats strong {
+    font-size: 15px;
+  }
+
+  .crop-image-stats span {
+    font-size: 6px;
+  }
+
+  .crop-form-wrapper {
+    padding:
+      24px
+      16px
+      18px;
+  }
+
+  .crop-top-header {
+    gap: 8px;
+  }
+
+  .crop-top-header h2 {
+    font-size: 34px;
+  }
+
+  .crop-top-header p {
+    font-size: 11px;
+  }
+
+  .crop-back-button {
+    min-width: 62px;
+    height: 40px;
+
+    padding:
+      0
+      8px;
+
+    font-size: 10px;
+  }
+
+  .crop-month-bar {
+    gap: 2px;
+  }
+
+  .crop-month-chip {
+    padding:
+      6px
+      1px;
+
+    font-size: 7px;
+  }
+
+  .crop-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .crop-reset-button {
+    order: 2;
+  }
+
+  .crop-submit-button {
+    order: 1;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+  .crop-image-side {
+    min-height: 300px;
+  }
+
+  .crop-image-inner {
+    min-height: 288px;
+
+    padding: 18px;
+  }
+
+  .crop-image-bottom h1 {
+    font-size: 31px;
+  }
+
+  .crop-image-bottom p {
+    display: none;
+  }
+
+  .crop-image-stats {
+    gap: 9px;
+  }
+
+  .crop-image-stats span {
+    font-size: 5px;
+  }
+
+  .crop-form-wrapper {
+    padding:
+      22px
+      13px
+      16px;
+  }
+
+  .crop-top-header h2 {
+    font-size: 29px;
+  }
+
+}

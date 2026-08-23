@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=farmVerseApplication/C:\/Users\/renuk\/.m2\/repository\/org\/hibernate\/orm\/hibernate-core\/6.6.53.Final\/hibernate-core-6.6.53.Final.jar=/maven.pomderived=/true=/=/maven.groupId=/org.hibernate.orm=/=/maven.artifactId=/hibernate-core=/=/maven.version=/6.6.53.Final=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.hibernate.query.criteria(JpaQueryGroup.class[JpaQueryGroup" modifiers="1537" timestamp="1783349913380"/>
+    <typeInfo handle="=farmVerseApplication/C:\/Users\/renuk\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/3.5.13\/spring-data-jpa-3.5.13.jar=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/3.5.13=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1783349892459"/>
+    <typeInfo handle="=farmVerseApplication/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;edu.infosys.farmVerseApplication.dao{CropDao.java[CropDao" modifiers="513" timestamp="1784818400576"/>
+</typeInfoHistroy>

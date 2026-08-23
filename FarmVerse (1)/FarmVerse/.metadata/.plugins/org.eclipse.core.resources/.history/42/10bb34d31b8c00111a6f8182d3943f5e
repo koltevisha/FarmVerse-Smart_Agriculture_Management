@@ -1,0 +1,53 @@
+package edu.infosys.farmVerseApplication.controller;
+
+import edu.infosys.farmVerseApplication.dto.LoginRequest;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextRepository;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class LoginController {
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    private final SecurityContextRepository securityContextRepository =
+            new HttpSessionSecurityContextRepository();
+
+    @PostMapping("/farmverse/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest,
+                                    HttpServletRequest request,
+                                    HttpServletResponse response) {
+        try {
+            Authentication auth = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            loginRequest.getUsername(),
+                            loginRequest.getPassword()
+                    )
+            );
+
+            SecurityContext context = SecurityContextHolder.createEmptyContext();
+            context.setAuthentication(auth);
+            SecurityContextHolder.setContext(context);
+
+            // This is the critical line — persists the SecurityContext into the HttpSession
+            securityContextRepository.saveContext(context, request, response);
+
+            return ResponseEntity.ok("Login success");
+
+        } catch (Exception e) {
+            return ResponseEntity.status(401).body("Invalid username or password");
+        }
+    }
+}
