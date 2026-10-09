@@ -1,0 +1,35 @@
+﻿
+> farm-verse-front@0.1.0 build
+> node --max-old-space-size=4096 node_modules/react-scripts/bin/react-scripts.js build
+
+Creating an optimized production build...
+Failed to compile.
+
+Error: [BABEL] C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\src\index.js: Cannot find module '../core-js-compat/get-modules-list-for-target-version.js'
+Require stack:
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\@babel\plugin-transform-runtime\node_modules\babel-plugin-polyfill-corejs3\lib\index.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\@babel\plugin-transform-runtime\lib\babel-7\polyfills.cjs
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\@babel\plugin-transform-runtime\lib\babel-7\index.cjs
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\@babel\plugin-transform-runtime\lib\index.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\babel-preset-react-app\create.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\babel-preset-react-app\index.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\@babel\core\lib\config\files\module-types.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\@babel\core\lib\config\files\configuration.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\@babel\core\lib\config\files\index.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\@babel\core\lib\index.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\@rollup\plugin-babel\dist\index.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\workbox-build\build\lib\bundle.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\workbox-webpack-plugin\build\generate-sw.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\workbox-webpack-plugin\build\index.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\react-scripts\config\webpack.config.js
+- C:\Users\Lenovo\OneDrive\Desktop\Intelligent Farm Operations Platform with Smart Agro Precision  System\farm-verse-front\farm-verse-front\node_modules\react-scripts\scripts\build.js (While processing: "C:\\Users\\Lenovo\\OneDrive\\Desktop\\Intelligent Farm Operations Platform with Smart Agro Precision  System\\farm-verse-front\\farm-verse-front\\node_modules\\babel-preset-react-app\\index.js$7")
+    at Generator.next (<anonymous>)
+    at Generator.next (<anonymous>)
+    at Generator.next (<anonymous>)
+    at Generator.next (<anonymous>)
+    at cachedFunction.next (<anonymous>)
+    at loadPluginDescriptor.next (<anonymous>)
+    at loadPluginDescriptors.next (<anonymous>)
+    at Generator.next (<anonymous>)
+
+

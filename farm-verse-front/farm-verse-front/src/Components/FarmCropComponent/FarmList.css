@@ -1,0 +1,952 @@
+
+/* ========================================================= 
+   FARM LIST 
+   FARMVERSE — SAME CROP JOURNAL THEME 
+   Forest Green + Cream + Terracotta + Gold 
+========================================================= */ 
+ 
+* { 
+  box-sizing: border-box; 
+} 
+ 
+.fl-page { 
+  min-height: 100vh; 
+  width: 100%; 
+ 
+  background: 
+    radial-gradient( 
+      circle at 8% 5%, 
+      rgba(183, 92, 61, 0.08), 
+      transparent 28% 
+    ), 
+    radial-gradient( 
+      circle at 92% 10%, 
+      rgba(47, 118, 87, 0.10), 
+      transparent 30% 
+    ), 
+    linear-gradient( 
+      135deg, 
+      #f8f3e4 0%, 
+      #f1ead3 48%, 
+      #ebe1c5 100% 
+    ); 
+ 
+  color: #17352c; 
+ 
+  font-family: 
+    "DM Sans", 
+    Inter, 
+    "Segoe UI", 
+    Arial, 
+    sans-serif; 
+} 
+ 
+ 
+/* ========================================================= 
+   MAIN 
+========================================================= */ 
+ 
+.fl-main { 
+  width: min(1180px, calc(100% - 48px)); 
+  margin: 0 auto; 
+ 
+  padding: 30px 0 50px; 
+} 
+ 
+ 
+/* ========================================================= 
+   BACK BUTTON 
+========================================================= */ 
+ 
+.fl-top-bar { 
+  display: flex; 
+  justify-content: flex-end; 
+ 
+  margin-bottom: 16px; 
+} 
+ 
+.fl-back-btn { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 7px; 
+ 
+  padding: 9px 16px; 
+ 
+  border: 1px solid #cbbd98; 
+  border-radius: 9px; 
+ 
+  background: #fffdf6; 
+  color: #153c30; 
+ 
+  font-family: inherit; 
+  font-size: 13px; 
+  font-weight: 700; 
+ 
+  cursor: pointer; 
+ 
+  transition: 
+    background 0.2s ease, 
+    border-color 0.2s ease, 
+    transform 0.2s ease, 
+    box-shadow 0.2s ease; 
+} 
+ 
+.fl-back-btn:hover { 
+  background: #153c30; 
+  border-color: #153c30; 
+  color: #ffffff; 
+ 
+  transform: translateY(-1px); 
+ 
+  box-shadow: 
+    0 7px 15px rgba(21, 60, 48, 0.15); 
+} 
+ 
+ 
+/* ========================================================= 
+   HEADER 
+========================================================= */ 
+ 
+.fl-header { 
+  padding-bottom: 20px; 
+ 
+  border-bottom: 1px solid rgba(117, 100, 61, 0.25); 
+} 
+ 
+.fl-eyebrow { 
+  margin-bottom: 7px; 
+ 
+  color: #2f7657; 
+ 
+  font-size: 10px; 
+  font-weight: 900; 
+ 
+  letter-spacing: 0.15em; 
+  text-transform: uppercase; 
+} 
+ 
+.fl-title { 
+  margin: 0; 
+ 
+  color: #102d25; 
+ 
+  font-family: 
+    "Playfair Display", 
+    Georgia, 
+    "Times New Roman", 
+    serif; 
+ 
+  font-size: 36px; 
+  line-height: 1.05; 
+ 
+  font-weight: 800; 
+ 
+  letter-spacing: -0.03em; 
+} 
+ 
+.fl-subtitle { 
+  margin: 8px 0 0; 
+ 
+  color: #66736b; 
+ 
+  font-size: 13px; 
+  line-height: 1.5; 
+ 
+  font-weight: 500; 
+} 
+ 
+ 
+/* ========================================================= 
+   ERROR 
+========================================================= */ 
+ 
+.fl-error { 
+  margin-top: 16px; 
+ 
+  padding: 11px 14px; 
+ 
+  border: 1px solid #d9a28f; 
+  border-left: 4px solid #b75c3d; 
+ 
+  border-radius: 9px; 
+ 
+  background: #f6ded4; 
+  color: #7c3625; 
+ 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+ 
+  font-size: 12px; 
+  font-weight: 700; 
+} 
+ 
+.fl-error button { 
+  border: none; 
+  background: transparent; 
+ 
+  color: inherit; 
+ 
+  font-size: 15px; 
+  font-weight: 800; 
+ 
+  cursor: pointer; 
+} 
+ 
+ 
+/* ========================================================= 
+   SUMMARY 
+========================================================= */ 
+ 
+.fl-summary { 
+  min-height: 74px; 
+ 
+  margin-top: 18px; 
+  padding: 12px 15px; 
+ 
+  border: 1px solid #d7c99e; 
+  border-radius: 13px; 
+ 
+  background: #fffdf6; 
+ 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+ 
+  gap: 18px; 
+ 
+  box-shadow: 
+    0 5px 16px rgba(28, 55, 43, 0.06); 
+} 
+ 
+.fl-summary-left { 
+  display: flex; 
+  align-items: center; 
+ 
+  gap: 12px; 
+} 
+ 
+.fl-summary-number { 
+  width: 46px; 
+  height: 46px; 
+ 
+  flex-shrink: 0; 
+ 
+  border-radius: 11px; 
+ 
+  background: #dce8d6; 
+  color: #1b4d3d; 
+ 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+ 
+  font-size: 20px; 
+  font-weight: 900; 
+} 
+ 
+.fl-summary-title { 
+  color: #153c30; 
+ 
+  font-size: 13px; 
+  font-weight: 900; 
+} 
+ 
+.fl-summary-text { 
+  margin-top: 2px; 
+ 
+  color: #81745f; 
+ 
+  font-size: 10px; 
+} 
+ 
+ 
+/* ========================================================= 
+   REGISTER BUTTON 
+========================================================= */ 
+ 
+.fl-register-btn { 
+  border: none; 
+  border-radius: 8px; 
+ 
+  padding: 10px 16px; 
+ 
+  background: 
+    linear-gradient( 
+      135deg, 
+      #1b4d3d, 
+      #2f7657 
+    ); 
+ 
+  color: #ffffff; 
+ 
+  font-family: inherit; 
+ 
+  font-size: 12px; 
+  font-weight: 900; 
+ 
+  cursor: pointer; 
+ 
+  transition: 
+    0.2s ease; 
+} 
+ 
+.fl-register-btn:hover { 
+  background: 
+    linear-gradient( 
+      135deg, 
+      #23634b, 
+      #153c30 
+    ); 
+ 
+  transform: translateY(-1px); 
+ 
+  box-shadow: 
+    0 8px 18px rgba(24, 71, 55, 0.18); 
+} 
+ 
+ 
+/* ========================================================= 
+   SECTION 
+========================================================= */ 
+ 
+.fl-section { 
+  margin-top: 29px; 
+  margin-bottom: 13px; 
+} 
+ 
+.fl-section-label { 
+  margin-bottom: 5px; 
+ 
+  color: #b75c3d; 
+ 
+  font-size: 9px; 
+  font-weight: 900; 
+ 
+  letter-spacing: 0.15em; 
+ 
+  text-transform: uppercase; 
+} 
+ 
+.fl-section-title { 
+  margin: 0; 
+ 
+  color: #153c30; 
+ 
+  font-family: 
+    "Playfair Display", 
+    Georgia, 
+    "Times New Roman", 
+    serif; 
+ 
+  font-size: 22px; 
+  line-height: 1.2; 
+ 
+  font-weight: 800; 
+} 
+ 
+ 
+/* ========================================================= 
+   GRID 
+========================================================= */ 
+ 
+.fl-grid { 
+  display: grid; 
+ 
+  grid-template-columns: 
+    repeat(2, minmax(0, 1fr)); 
+ 
+  gap: 16px; 
+} 
+ 
+ 
+/* ========================================================= 
+   FARM CARD 
+========================================================= */ 
+ 
+.fl-farm-card { 
+  position: relative; 
+ 
+  overflow: hidden; 
+ 
+  min-width: 0; 
+ 
+  background: 
+    linear-gradient( 
+      145deg, 
+      #fffdf6 0%, 
+      #f3ead0 100% 
+    ); 
+ 
+  border: 1px solid #cdbf96; 
+  border-radius: 14px; 
+ 
+  box-shadow: 
+    0 8px 22px rgba(28, 55, 43, 0.11); 
+ 
+  transition: 
+    transform 0.2s ease, 
+    box-shadow 0.2s ease, 
+    border-color 0.2s ease; 
+} 
+ 
+.fl-farm-card::before { 
+  content: ""; 
+ 
+  display: block; 
+ 
+  width: 100%; 
+  height: 5px; 
+ 
+  background: 
+    var( 
+      --farm-band-color, 
+      #2f7657 
+    ); 
+} 
+ 
+.fl-farm-card:hover { 
+  transform: translateY(-3px); 
+ 
+  border-color: #bba873; 
+ 
+  box-shadow: 
+    0 13px 28px rgba(28, 55, 43, 0.16); 
+} 
+ 
+ 
+/* ========================================================= 
+   CARD TOP 
+========================================================= */ 
+ 
+.fl-card-top { 
+  padding: 14px 16px 0; 
+ 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+ 
+  gap: 10px; 
+} 
+ 
+.fl-field-badge { 
+  padding: 5px 8px; 
+ 
+  border-radius: 7px; 
+ 
+  background: #dce8d6; 
+  color: #1b4d3d; 
+ 
+  font-size: 9px; 
+  font-weight: 900; 
+ 
+  letter-spacing: 0.06em; 
+} 
+ 
+.fl-status { 
+  display: inline-flex; 
+  align-items: center; 
+ 
+  gap: 6px; 
+ 
+  padding: 5px 9px; 
+ 
+  border-radius: 20px; 
+ 
+  background: #dfeadb; 
+  color: #23634b; 
+ 
+  font-size: 9px; 
+  font-weight: 900; 
+} 
+ 
+.fl-status-dot { 
+  width: 6px; 
+  height: 6px; 
+ 
+  flex-shrink: 0; 
+ 
+  border-radius: 50%; 
+ 
+  background: #2f7657; 
+} 
+ 
+ 
+/* ========================================================= 
+   CARD CONTENT 
+   FARM NAME BACKGROUND 
+   THIS IS THE LIGHT WHITE / CREAM AREA 
+========================================================= */ 
+ 
+.fl-card-content { 
+  padding: 23px 16px 15px; 
+ 
+  background: 
+    linear-gradient( 
+      145deg, 
+      #fffdf6 0%, 
+      #f3ead0 100% 
+    ); 
+} 
+ 
+.fl-small-label { 
+  display: block; 
+ 
+  margin-bottom: 7px; 
+ 
+  color: #796b53; 
+ 
+  font-size: 11px; 
+  font-weight: 900; 
+ 
+  letter-spacing: 0.11em; 
+ 
+  text-transform: uppercase; 
+} 
+ 
+.fl-farm-name { 
+  margin: 0; 
+ 
+  color: #153c30; 
+ 
+  font-family: 
+    "Playfair Display", 
+    Georgia, 
+    "Times New Roman", 
+    serif; 
+ 
+  font-size: 26px; 
+  line-height: 1.18; 
+ 
+  font-weight: 800; 
+ 
+  overflow-wrap: anywhere; 
+} 
+ 
+.fl-farm-id { 
+  margin-top: 6px; 
+ 
+  color: #79503e; 
+ 
+  font-size: 11px; 
+  font-weight: 800; 
+ 
+  letter-spacing: 0.06em; 
+} 
+ 
+ 
+/* ========================================================= 
+   INFORMATION BOXES 
+========================================================= */ 
+ 
+.fl-info-grid { 
+  display: grid; 
+ 
+  grid-template-columns: 
+    1fr 1.15fr; 
+ 
+  gap: 8px; 
+ 
+  margin-top: 16px; 
+} 
+ 
+.fl-info-box { 
+  min-width: 0; 
+ 
+  padding: 14px 12px; 
+ 
+  border: 1px solid #cdbd91; 
+  border-radius: 9px; 
+ 
+  background: 
+    linear-gradient( 
+      145deg, 
+      #f5e9c6, 
+      #e7d6a6 
+    ); 
+} 
+ 
+.fl-info-label { 
+  display: block; 
+ 
+  margin-bottom: 7px; 
+ 
+  color: #6c6957; 
+ 
+  font-size: 10px; 
+  line-height: 1; 
+ 
+  font-weight: 900; 
+ 
+  letter-spacing: 0.1em; 
+ 
+  text-transform: uppercase; 
+} 
+ 
+.fl-info-value { 
+  display: block; 
+ 
+  color: #17352c; 
+ 
+  font-size: 15px; 
+  line-height: 1.35; 
+ 
+  font-weight: 900; 
+ 
+  overflow-wrap: anywhere; 
+} 
+ 
+.fl-soil-value { 
+  color: #5b6947; 
+  font-size: 15px; 
+} 
+ 
+ 
+/* ========================================================= 
+   CARD FOOTER 
+   SAME LIGHT BACKGROUND AS FARM NAME 
+   NOT DARK OCHRE 
+========================================================= */ 
+ 
+.fl-card-footer { 
+  min-height: 58px; 
+ 
+  padding: 10px 16px; 
+ 
+  border-top: 1px solid #d8c9a4; 
+ 
+  background: 
+    linear-gradient( 
+      145deg, 
+      #fffdf6 0%, 
+      #f3ead0 100% 
+    ); 
+ 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+ 
+  gap: 10px; 
+} 
+ 
+.fl-footer-text { 
+  color: #756449; 
+ 
+  font-size: 11px; 
+  font-weight: 650; 
+} 
+ 
+ 
+/* ========================================================= 
+   DELETE BUTTON 
+========================================================= */ 
+ 
+.fl-remove-btn { 
+  min-height: 40px; 
+ 
+  padding: 0 16px; 
+ 
+  border: 1px solid #d9a28f; 
+  border-radius: 8px; 
+ 
+  background: #f6ded4; 
+  color: #8f402c; 
+ 
+  font-family: inherit; 
+ 
+  font-size: 13px; 
+  font-weight: 900; 
+ 
+  cursor: pointer; 
+ 
+  transition: 
+    background 0.2s ease, 
+    border-color 0.2s ease, 
+    color 0.2s ease, 
+    transform 0.2s ease, 
+    box-shadow 0.2s ease; 
+} 
+ 
+.fl-remove-btn:hover { 
+  background: #e8b19a; 
+  border-color: #b75c3d; 
+ 
+  color: #6d291d; 
+ 
+  transform: translateY(-1px); 
+ 
+  box-shadow: 
+    0 6px 13px rgba(183, 92, 61, 0.15); 
+} 
+ 
+ 
+/* ========================================================= 
+   DELETE CONFIRMATION 
+========================================================= */ 
+ 
+.fl-delete-confirm { 
+  width: 100%; 
+ 
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-end; 
+ 
+  gap: 7px; 
+ 
+  color: #8f402c; 
+ 
+  font-size: 12px; 
+  font-weight: 800; 
+} 
+ 
+.fl-delete-confirm span { 
+  margin-right: auto; 
+} 
+ 
+.fl-confirm-yes, 
+.fl-confirm-no { 
+  min-height: 36px; 
+ 
+  padding: 0 13px; 
+ 
+  border-radius: 7px; 
+ 
+  font-family: inherit; 
+ 
+  font-size: 12px; 
+  font-weight: 900; 
+ 
+  cursor: pointer; 
+} 
+ 
+.fl-confirm-yes { 
+  border: 1px solid #b75c3d; 
+ 
+  background: #b75c3d; 
+  color: #ffffff; 
+} 
+ 
+.fl-confirm-yes:hover { 
+  background: #8f402c; 
+} 
+ 
+.fl-confirm-no { 
+  border: 1px solid #b9aa83; 
+ 
+  background: #f7f0dd; 
+  color: #153c30; 
+} 
+ 
+.fl-confirm-no:hover { 
+  background: #e9dfc2; 
+} 
+ 
+ 
+/* ========================================================= 
+   EMPTY STATE 
+========================================================= */ 
+ 
+.fl-empty { 
+  padding: 45px 25px; 
+ 
+  border: 1px solid #d7c99e; 
+  border-radius: 14px; 
+ 
+  background: 
+    linear-gradient( 
+      145deg, 
+      #fffdf6, 
+      #eee4c8 
+    ); 
+ 
+  text-align: center; 
+ 
+  box-shadow: 
+    0 8px 22px rgba(28, 55, 43, 0.08); 
+} 
+ 
+.fl-empty-icon { 
+  font-size: 33px; 
+} 
+ 
+.fl-empty h3 { 
+  margin: 10px 0 5px; 
+ 
+  color: #153c30; 
+ 
+  font-family: 
+    "Playfair Display", 
+    Georgia, 
+    "Times New Roman", 
+    serif; 
+ 
+  font-size: 20px; 
+  font-weight: 800; 
+} 
+ 
+.fl-empty p { 
+  max-width: 450px; 
+ 
+  margin: 0 auto 18px; 
+ 
+  color: #756b58; 
+ 
+  font-size: 12px; 
+  line-height: 1.5; 
+} 
+ 
+ 
+/* ========================================================= 
+   SKELETON 
+========================================================= */ 
+ 
+.fl-skeleton { 
+  min-height: 250px; 
+ 
+  padding: 20px; 
+ 
+  background: 
+    linear-gradient( 
+      145deg, 
+      #fffdf6, 
+      #eee4c8 
+    ); 
+} 
+ 
+.fl-skeleton::before { 
+  background: #2f7657; 
+} 
+ 
+.fl-skeleton-line { 
+  width: 65%; 
+  height: 12px; 
+ 
+  margin-top: 22px; 
+ 
+  border-radius: 5px; 
+ 
+  background: #d9c99b; 
+} 
+ 
+.fl-skeleton-line.large { 
+  width: 42%; 
+ 
+  margin-top: 5px; 
+} 
+ 
+.fl-skeleton-box { 
+  width: 100%; 
+  height: 65px; 
+ 
+  margin-top: 35px; 
+ 
+  border-radius: 9px; 
+ 
+  background: #e3d6b5; 
+} 
+ 
+ 
+/* ========================================================= 
+   FOOTER 
+========================================================= */ 
+ 
+.fl-page-footer { 
+  margin-top: 27px; 
+ 
+  padding-top: 15px; 
+ 
+  border-top: 1px solid #d8c9a2; 
+ 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+ 
+  gap: 15px; 
+ 
+  color: #766c5a; 
+ 
+  font-size: 9px; 
+} 
+ 
+ 
+/* ========================================================= 
+   RESPONSIVE 
+========================================================= */ 
+ 
+@media (max-width: 850px) { 
+ 
+  .fl-main { 
+    width: min(100% - 30px, 700px); 
+ 
+    padding-top: 25px; 
+  } 
+ 
+  .fl-grid { 
+    grid-template-columns: 1fr; 
+  } 
+ 
+  .fl-title { 
+    font-size: 32px; 
+  } 
+} 
+ 
+ 
+@media (max-width: 600px) { 
+ 
+  .fl-main { 
+    width: calc(100% - 22px); 
+  } 
+ 
+  .fl-summary { 
+    align-items: flex-start; 
+ 
+    flex-direction: column; 
+  } 
+ 
+  .fl-register-btn { 
+    width: 100%; 
+  } 
+ 
+  .fl-info-grid { 
+    grid-template-columns: 1fr 1fr; 
+  } 
+ 
+  .fl-page-footer { 
+    flex-direction: column; 
+ 
+    align-items: flex-start; 
+  } 
+} 
+ 
+ 
+@media (max-width: 420px) { 
+ 
+  .fl-info-grid { 
+    grid-template-columns: 1fr; 
+  } 
+ 
+  .fl-title { 
+    font-size: 28px; 
+  } 
+ 
+  .fl-farm-name { 
+    font-size: 22px; 
+  } 
+ 
+  .fl-card-footer { 
+    flex-wrap: wrap; 
+  } 
+ 
+  .fl-remove-btn { 
+    min-height: 40px; 
+    padding: 0 15px; 
+    font-size: 12px; 
+    margin-left: auto; 
+  } 
+ 
+  .fl-delete-confirm { 
+    flex-wrap: wrap; 
+  } 
+ 
+}
+
